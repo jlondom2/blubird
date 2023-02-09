@@ -24,7 +24,6 @@ function LayoutSideNav({ handleLogout }) {
             >
               <i className='fa-solid fa-bell'></i>
 
-              {/*   <!-- notifications badge count --> */}
               <span className='noti-bagde position-absolute top-0 start-80 translate-middle border-light rounded-circle'>
                 <span className='visually-hidden'>Notifications unread</span>
               </span>
