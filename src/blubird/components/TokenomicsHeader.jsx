@@ -16,7 +16,7 @@ function TokenomicsHeader() {
           <div className='main-menu text-center d-lg-flex align-items-center mb-3 mb-md-0'>
             <div>
               <a
-                href='index.html'
+                href='#'
                 className='menu-item active'
               >
                 <i className='fa-solid fa-square-poll-vertical me-2'></i>
@@ -24,7 +24,7 @@ function TokenomicsHeader() {
               </a>
 
               <a
-                href='cap-table.html'
+                href='#'
                 className='menu-item'
               >
                 <i className='fa-solid fa-square-poll-vertical me-2'></i>
@@ -33,7 +33,7 @@ function TokenomicsHeader() {
               </a>
 
               <a
-                href='deployment.html'
+                href='#'
                 className='menu-item'
               >
                 <i className='fa-solid fa-square-poll-vertical me-2'></i>
