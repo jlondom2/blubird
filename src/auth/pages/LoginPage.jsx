@@ -1,15 +1,16 @@
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBarLogin from "../components/NavBarLogin";
-import { AuthContext } from "../context/AuthContext";
 import { useForm } from "react-hook-form";
+import { useSelector, useDispatch } from "react-redux";
 
-export default function LoginPage() {
+import { login } from "../../store/auth/authSlice";
+
+export const LoginPage = () => {
+  const dispatch = useDispatch();
+  const { state } = useSelector((state) => state.auth);
   const navigate = useNavigate();
 
-  const { login } = useContext(AuthContext);
-
-  const handleLogin = () => {};
+  console.log("State is:", state);
 
   /* HANDLE THE FORM */
   const {
@@ -21,15 +22,7 @@ export default function LoginPage() {
 
   const onSubmit = (data) => {
     console.log(data);
-
-    const { email } = data;
-
-    login(email);
-
-    /* RETURN TO LAST PATH */
-    const lastPath = localStorage.getItem("lastpath");
-
-    lastPath ? navigate(lastPath) : navigate("/dashboard");
+    dispatch(login());
   };
 
   return (
@@ -112,4 +105,4 @@ export default function LoginPage() {
       </div>
     </>
   );
-}
+};

@@ -1,28 +1,17 @@
-import { useContext, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../auth/context/AuthContext";
-import LayoutSideNav from "../components/LayoutSideNav";
-import LayoutSideNav1 from "../components/LayoutSideNav1";
-import Toggler from "../components/Toggler";
+
+import LayoutSideNav from "../ui/components/LayoutSideNav";
+import LayoutSideNav1 from "../ui/components/LayoutSideNav1";
+import Toggler from "../ui/components/Toggler";
 import TokenomicsHeader from "../components/TokenomicsHeader";
 
-function DashboardPage() {
-  const [isActive, setActive] = useState(false);
-
-  const [item, setItem] = useState(false);
-
-  const handleToggle = () => {
-    setActive(!isActive);
-    setItem(!item);
-  };
-
-  const { user, logout } = useContext(AuthContext);
-
+export const DashboardPage = () => {
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    logout();
+  const { toggled } = useSelector((state) => state.toggler);
 
+  const handleLogout = () => {
     navigate("/login", {
       replace: true,
     });
@@ -32,28 +21,19 @@ function DashboardPage() {
     <>
       <div
         className={`sb-nav-fixed bg-dark  ${
-          isActive ? "sb-sidenav-toggled" : "rrr"
+          toggled ? "sb-sidenav-toggled" : "rrr"
         }`}
       >
         <div id='layoutSidenav'>
           <LayoutSideNav handleLogout={handleLogout} />
           <LayoutSideNav1 />
-          <Toggler
-            handleToggle={handleToggle}
-            item={item}
-          />
+          <Toggler />
 
           {/* content */}
 
           <div id='layoutSidenav_content'>
             <main>
-              <div class='container-fluid px-4'>
-                <p className='text-white'>
-                  <small>
-                    Welcome! <strong>{user.email}</strong>
-                  </small>
-                </p>
-
+              <div className='container-fluid px-4'>
                 <TokenomicsHeader />
               </div>
             </main>
@@ -62,6 +42,4 @@ function DashboardPage() {
       </div>
     </>
   );
-}
-
-export default DashboardPage;
+};

@@ -1,8 +1,17 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faBars } from "@fortawesome/free-solid-svg-icons";
+import { useSelector, useDispatch } from "react-redux";
 
-function Toggler({ handleToggle, item }) {
+import { onToggle } from "../../../store/ui/togglerSlice";
+
+function Toggler() {
+  const { toggled } = useSelector((state) => state.toggler);
+  const dispatch = useDispatch();
+
+  const handleToggle = () => {
+    dispatch(onToggle(!toggled));
+  };
   return (
     <>
       <div id='toggler'>
@@ -12,7 +21,7 @@ function Toggler({ handleToggle, item }) {
             className='btn btn-link text-white'
             onClick={handleToggle}
           >
-            {item ? (
+            {toggled ? (
               <FontAwesomeIcon icon='fa-solid fa-chevron-right' />
             ) : (
               <FontAwesomeIcon icon='fa-solid fa-chevron-left' />

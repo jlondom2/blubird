@@ -1,35 +1,43 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
-import LoginPage from "../auth/pages/LoginPage";
-import BluBirdRoutes from "../blubird/routes/BlubirdRoutes";
+import { LoginPage } from "../auth";
+import { DashboardPage } from "../blubird";
+import { getEnvVariables } from "../helpers";
 
-import PrivateRoute from "./PrivateRoute";
-import PublicRoute from "./PublicRoute";
+export const AppRouter = () => {
+  const { state: authStatus } = useSelector((state) => state.auth);
 
-function AppRouter() {
   return (
     <>
       <Routes>
-        <Route
-          path='/login'
-          element={
-            <PublicRoute>
-              <LoginPage></LoginPage>
-            </PublicRoute>
-          }
-        ></Route>
+        {authStatus === "not-authenticated" ? (
+          <Route
+            path='/auth/*'
+            element={<LoginPage></LoginPage>}
+          ></Route>
+        ) : (
+          <Route
+            path='/*'
+            element={
+              <Navigate
+                to='/dashboard'
+                replace={true}
+              />
+            }
+          ></Route>
+        )}
 
         <Route
           path='/*'
-          element={
-            <PrivateRoute>
-              <BluBirdRoutes></BluBirdRoutes>
-            </PrivateRoute>
-          }
+          element={<Navigate to='auth/login' />}
+        ></Route>
+
+        <Route
+          path='/dashboard'
+          element={<DashboardPage />}
         ></Route>
       </Routes>
     </>
   );
-}
-
-export default AppRouter;
+};
