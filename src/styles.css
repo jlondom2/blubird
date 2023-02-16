@@ -12791,3 +12791,9 @@ strong {
   padding: 11px !important;
   font-size: 22px !important;
 }
+
+.errors {
+  color: red;
+  font-size: 12px;
+  margin-top: 6px;
+}

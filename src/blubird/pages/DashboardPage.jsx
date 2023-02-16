@@ -11,11 +11,7 @@ export const DashboardPage = () => {
 
   const { toggled } = useSelector((state) => state.toggler);
 
-  const handleLogout = () => {
-    navigate("/login", {
-      replace: true,
-    });
-  };
+  const handleLogout = () => {};
 
   return (
     <>

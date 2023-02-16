@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 
 import { login } from "../../store/auth/authSlice";
+import { SignUpForm } from "../components/signup/SignUpForm";
 
 export const LoginPage = () => {
   const dispatch = useDispatch();
@@ -27,6 +28,8 @@ export const LoginPage = () => {
 
   return (
     <>
+      <SignUpForm />
+
       <div className='bg-primary'>
         {/* NavBar Login */}
         <NavBarLogin />
