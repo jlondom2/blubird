@@ -4,9 +4,18 @@ import { LoginPage } from "../auth";
 import { DashboardPage } from "../blubird";
 import { getEnvVariables } from "../helpers";
 import Protected from "./Protected";
+import { useEffect } from "react";
+import { validateLogin } from "../store/auth/thunks";
 
 export const AppRouter = () => {
   const { state: authStatus } = useSelector((state) => state.auth);
+
+  /* console.log(getEnvVariables()); */
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(validateLogin());
+  }, []);
 
   return (
     <>

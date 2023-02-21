@@ -61,7 +61,7 @@ function LayoutSideNav({ handleLogout }) {
 
               <div className='mb-0'>
                 <a
-                  href='#'
+                  role='button'
                   onClick={handleLogout}
                 >
                   <i className='fa-solid fa-right-from-bracket'></i> Logout

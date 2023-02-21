@@ -1,17 +1,16 @@
-import { useNavigate } from "react-router-dom";
 import NavBarLogin from "../components/NavBarLogin";
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
-
-import { login } from "../../store/auth/authSlice";
 import { SignUpForm } from "../components/signup/SignUpForm";
+import { handleShow1 } from "../../store/ui/signUpModalsSlice";
+import { Step1, Step2, Step3, Step4, Step5 } from "../components/signup";
+import { startLogin, validateLogin } from "../../store/auth/thunks";
 
 export const LoginPage = () => {
   const dispatch = useDispatch();
-  const { state } = useSelector((state) => state.auth);
-  const navigate = useNavigate();
-
-  console.log("State is:", state);
+  const { state, errorMessage } = useSelector((state) => state.auth);
+  const { showModal1, showModal2, showModal3, showModal4, showModal5 } =
+    useSelector((state) => state.modal);
 
   /* HANDLE THE FORM */
   const {
@@ -19,16 +18,25 @@ export const LoginPage = () => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      email: "test@test.com",
+    },
+  });
 
   const onSubmit = (data) => {
-    console.log(data);
-    dispatch(login());
+    dispatch(startLogin(data));
   };
 
   return (
     <>
-      <SignUpForm />
+      <SignUpForm>
+        <Step1 props={showModal1} />
+        <Step2 props={showModal2} />
+        <Step3 props={showModal3} />
+        <Step4 props={showModal4} />
+        <Step5 props={showModal5} />
+      </SignUpForm>
 
       <div className='bg-primary'>
         {/* NavBar Login */}
@@ -70,6 +78,15 @@ export const LoginPage = () => {
                         >
                           SIGN IN
                         </button>
+
+                        {errorMessage && (
+                          <p
+                            className='text-center m-2'
+                            style={{ color: "red" }}
+                          >
+                            {errorMessage}
+                          </p>
+                        )}
                       </div>
                     </form>
                   </div>
@@ -92,8 +109,8 @@ export const LoginPage = () => {
                     <p>
                       Don't have and account yet? <br />
                       <a
-                        data-bs-toggle='modal'
-                        href='#sign_up'
+                        role='button'
+                        onClick={() => dispatch(handleShow1())}
                         className='fw-bold'
                       >
                         Sign Up

@@ -12777,6 +12777,7 @@ strong {
   border-color: #0e0e0e;
   color: #fff;
   background-color: #0e0e0e;
+  margin-right: 8px;
 }
 
 #toggler .btn:focus {

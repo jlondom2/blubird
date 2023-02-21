@@ -1,17 +1,26 @@
 import { useSelector, useDispatch } from "react-redux";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, redirect, useNavigate } from "react-router-dom";
 
 import LayoutSideNav from "../ui/components/LayoutSideNav";
 import LayoutSideNav1 from "../ui/components/LayoutSideNav1";
 import Toggler from "../ui/components/Toggler";
 import TokenomicsHeader from "../components/TokenomicsHeader";
+import { onLogout } from "../../store/auth/authSlice";
 
 export const DashboardPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const { toggled } = useSelector((state) => state.toggler);
 
-  const handleLogout = () => {};
+  const { user } = useSelector((state) => state.auth);
+
+  console.log("user is", user);
+
+  const handleLogout = () => {
+    dispatch(onLogout());
+    navigate("/login");
+  };
 
   return (
     <>
@@ -30,6 +39,7 @@ export const DashboardPage = () => {
           <div id='layoutSidenav_content'>
             <main>
               <div className='container-fluid px-4'>
+                <p></p>
                 <TokenomicsHeader />
               </div>
             </main>
