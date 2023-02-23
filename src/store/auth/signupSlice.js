@@ -7,10 +7,18 @@ export const signupSlice = createSlice({
   },
   reducers: {
     addFields: (state, { payload }) => {
+      console.log("Payload Is:", payload);
+
       state.formFields.push(payload);
+    },
+
+    clearFields: (state, { payload }) => {
+      console.log("clearing Fields:");
+
+      state.formFields = [];
     },
   },
 });
 
-export const { addFields } = signupSlice.actions;
+export const { addFields, clearFields } = signupSlice.actions;
 export default signupSlice;

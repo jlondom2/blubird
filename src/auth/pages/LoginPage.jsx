@@ -5,10 +5,13 @@ import { SignUpForm } from "../components/signup/SignUpForm";
 import { handleShow1 } from "../../store/ui/signUpModalsSlice";
 import { Step1, Step2, Step3, Step4, Step5 } from "../components/signup";
 import { startLogin, validateLogin } from "../../store/auth/thunks";
+import { useEffect } from "react";
 
 export const LoginPage = () => {
   const dispatch = useDispatch();
-  const { state, errorMessage } = useSelector((state) => state.auth);
+  const { state, errorMessage, successMessage } = useSelector(
+    (state) => state.auth
+  );
   const { showModal1, showModal2, showModal3, showModal4, showModal5 } =
     useSelector((state) => state.modal);
 
@@ -20,7 +23,8 @@ export const LoginPage = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      email: "test@test.com",
+      email: "",
+      password: "",
     },
   });
 
@@ -46,6 +50,17 @@ export const LoginPage = () => {
           <div id='layoutAuthentication_content'>
             <div className='container'>
               <div className='row justify-content-center text-white py-5'>
+                {successMessage ? (
+                  <div
+                    className='alert alert-success py-3 text-center'
+                    role='alert'
+                  >
+                    Account Created, please login using your credentials below
+                  </div>
+                ) : (
+                  ""
+                )}
+
                 <h1 className='text-center fw-light mt-5 mb-3'>
                   Sign in to your account
                 </h1>
@@ -65,6 +80,16 @@ export const LoginPage = () => {
                           {...register("email", { required: true })}
                         />
                         <label>Email address</label>
+                      </div>
+
+                      <div className='form-floating mb-3'>
+                        <input
+                          className='form-control'
+                          type='password'
+                          placeholder='password'
+                          {...register("password", { required: true })}
+                        />
+                        <label>Password</label>
                       </div>
 
                       <div className='d-grid'>

@@ -25,8 +25,10 @@ export const Step4 = ({ props }) => {
   });
 
   const onSubmitSignUp = (data) => {
-    dispatch(addFields(data));
-    console.log(data);
+    const { team_people, company_people } = data;
+    dispatch(addFields(team_people));
+    dispatch(addFields(company_people));
+
     dispatch(handleShow5());
   };
 

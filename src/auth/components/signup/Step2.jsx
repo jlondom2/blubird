@@ -27,9 +27,13 @@ export const Step2 = ({ props }) => {
   });
 
   const onSubmitSignUp = (data) => {
-    dispatch(addFields(data));
+    const { full_name, password, account_name, agree_terms } = data;
+
+    dispatch(addFields(full_name));
+    dispatch(addFields(password));
+    dispatch(addFields(account_name));
+    dispatch(addFields(agree_terms));
     dispatch(handleShow3());
-    console.log(data);
   };
 
   return (

@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { handleClose } from "../../../store/ui/signUpModalsSlice";
 import Modal from "react-bootstrap/Modal";
 import { addFields } from "../../../store/auth/signupSlice";
+import { startRegister } from "../../../store/auth/thunks";
 
 const schema5 = yup.object().shape({
   /* what_brings: yup.array().min(1).of(yup.string().required()).required(), */
@@ -24,10 +25,11 @@ export const Step5 = ({ props }) => {
   });
 
   const onSubmitSignUp = (data) => {
-    dispatch(addFields(data));
-    console.log(data);
+    const { manage_first } = data;
+    dispatch(addFields(manage_first));
     reset();
     dispatch(handleClose());
+    dispatch(startRegister());
   };
 
   return (

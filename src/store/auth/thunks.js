@@ -1,5 +1,13 @@
+import { redirect, useNavigate } from "react-router-dom";
 import blubirdApi from "../../api/blubirdApi";
-import { onLogin, checking, onLogout, clearErrorMessage } from "./authSlice";
+import {
+  onLogin,
+  checking,
+  onLogout,
+  onSucessRegister,
+  clearErrorMessage,
+} from "./authSlice";
+import { clearFields } from "./signupSlice";
 
 export const startLogin = (data) => {
   return async (dispatch) => {
@@ -7,8 +15,9 @@ export const startLogin = (data) => {
     dispatch(checking());
 
     const { email } = data;
+
     const login = email;
-    const password = "123456";
+    const { password } = data;
 
     try {
       const { data } = await blubirdApi.post("/users/login", {
@@ -30,8 +39,35 @@ export const startLogin = (data) => {
   };
 };
 
+export const startRegister = (data) => {
+  return async (dispatch, getState) => {
+    dispatch(checking());
+    const { formFields } = getState().signup;
+
+    try {
+      const { data } = await blubirdApi.post("/users/register", {
+        email: formFields[0],
+        password: formFields[2],
+        name: formFields[1],
+        accountName: formFields[3],
+      });
+      localStorage.setItem("token", data["user-token"]);
+      dispatch(onSucessRegister());
+    } catch (error) {
+      const errorMessage = error.response.data.message;
+
+      console.log(errorMessage);
+
+      dispatch(clearFields());
+
+      dispatch(onLogout(errorMessage));
+    }
+  };
+};
+
 export const validateLogin = () => {
   return async (dispatch) => {
+    dispatch(checking());
     const token = localStorage.getItem("token");
     if (!token) return dispatch(onLogout());
     try {
@@ -39,9 +75,8 @@ export const validateLogin = () => {
 
       console.log("logged?", resp.data);
 
-      if (resp.data) return dispatch(onLogin());
+      if (!resp.data) return dispatch(onLogout());
     } catch (error) {
-      localStorage.clear();
       console.log(error);
       dispatch(onLogout());
     }

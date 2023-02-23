@@ -6,11 +6,12 @@ export const authSlice = createSlice({
     state: "non-authenticated", //not-authenticated
     user: {},
     errorMessage: undefined,
+    successMessage: undefined,
   },
   reducers: {
     checking: (state, action) => {
       state.status = "checking";
-      state.user = {};
+
       state.errorMessage = undefined;
     },
     onLogin: (state, { payload }) => {
@@ -27,14 +28,25 @@ export const authSlice = createSlice({
       state.user = payload;
       localStorage.clear();
       state.errorMessage = payload;
+      state.successMessage = undefined;
     },
 
     clearErrorMessage: (state) => {
       state.errorMessage = null;
+      state.successMessage = null;
+    },
+
+    onSucessRegister: (state, payload) => {
+      state.successMessage = "Account Created! Please login below!";
     },
   },
 });
 
-export const { onLogin, checking, onLogout, clearErrorMessage } =
-  authSlice.actions;
+export const {
+  onLogin,
+  checking,
+  onLogout,
+  onSucessRegister,
+  clearErrorMessage,
+} = authSlice.actions;
 export default authSlice;

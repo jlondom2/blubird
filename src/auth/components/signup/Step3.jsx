@@ -8,7 +8,7 @@ import Modal from "react-bootstrap/Modal";
 import { addFields } from "../../../store/auth/signupSlice";
 
 const schema3 = yup.object().shape({
-  what_brings: yup.array().min(1).of(yup.string().required()).required(),
+  /*  what_brings: yup.array().min(1).of(yup.string().required()).required(), */
 });
 
 export const Step3 = ({ props }) => {
@@ -25,8 +25,10 @@ export const Step3 = ({ props }) => {
   });
 
   const onSubmitSignUp = (data) => {
-    dispatch(addFields(data));
-    console.log(data);
+    const { what_brings, role } = data;
+    dispatch(addFields(what_brings));
+    dispatch(addFields(role));
+
     dispatch(handleShow4());
   };
 
@@ -59,7 +61,7 @@ export const Step3 = ({ props }) => {
                 role='group'
               >
                 <input
-                  type='checkbox'
+                  type='radio'
                   className='btn-check'
                   id='btncheck1'
                   autoComplete='off'
@@ -73,7 +75,7 @@ export const Step3 = ({ props }) => {
                   Project
                 </label>
                 <input
-                  type='checkbox'
+                  type='radio'
                   className='btn-check'
                   id='btncheck2'
                   autoComplete='off'
@@ -87,7 +89,7 @@ export const Step3 = ({ props }) => {
                   VC Firms
                 </label>
                 <input
-                  type='checkbox'
+                  type='radio'
                   className='btn-check'
                   id='btncheck3'
                   autoComplete='off'
@@ -112,7 +114,7 @@ export const Step3 = ({ props }) => {
                 role='group'
               >
                 <input
-                  type='checkbox'
+                  type='radio'
                   className='btn-check'
                   id='btncheck11'
                   autoComplete='off'
@@ -126,7 +128,7 @@ export const Step3 = ({ props }) => {
                   Business Owner
                 </label>
                 <input
-                  type='checkbox'
+                  type='radio'
                   className='btn-check'
                   id='btncheck22'
                   autoComplete='off'
@@ -140,7 +142,7 @@ export const Step3 = ({ props }) => {
                   Team Member
                 </label>
                 <input
-                  type='checkbox'
+                  type='radio'
                   className='btn-check'
                   id='btncheck33'
                   autoComplete='off'
@@ -155,7 +157,7 @@ export const Step3 = ({ props }) => {
                 </label>
 
                 <input
-                  type='checkbox'
+                  type='radio'
                   className='btn-check'
                   id='btncheck44'
                   autoComplete='off'

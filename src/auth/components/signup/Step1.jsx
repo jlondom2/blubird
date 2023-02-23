@@ -10,9 +10,9 @@ import Modal from "react-bootstrap/Modal";
 const schema = yup.object().shape({
   signup_email: yup
     .string()
-    .email("Must be a valid email")
-    .max(255)
-    .required("Email is required"),
+    .email("Enter a Valid email")
+    .matches(/@[^.]*\./, "Email should contain an @")
+    .required("this will be displayed when empty"),
 });
 
 export const Step1 = ({ props }) => {
@@ -31,7 +31,9 @@ export const Step1 = ({ props }) => {
   const onSubmitSignUp = (data) => {
     dispatch(handleShow2());
 
-    dispatch(addFields(data));
+    const { signup_email } = data;
+
+    dispatch(addFields(signup_email));
   };
 
   return (

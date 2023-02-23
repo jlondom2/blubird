@@ -5892,7 +5892,9 @@ fieldset:disabled .btn {
     center/1em auto no-repeat;
   border: 0;
   border-radius: 0.25rem;
-  opacity: 0.5;
+
+  filter: invert(1) grayscale(100%) brightness(200%);
+  opacity: 1;
 }
 .btn-close:hover {
   color: #000;
