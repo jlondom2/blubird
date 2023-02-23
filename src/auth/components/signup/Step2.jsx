@@ -101,7 +101,8 @@ export const Step2 = ({ props }) => {
               <input
                 className='form-check-input'
                 type='checkbox'
-                {...register_signup_fields_2("agree_terms", {})}
+                required
+                {...register_signup_fields_2("agree_terms", { required: true })}
               />
               <label className='fs-6 form-check-label'>
                 <small>

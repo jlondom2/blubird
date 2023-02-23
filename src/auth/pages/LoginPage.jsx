@@ -68,7 +68,7 @@ export const LoginPage = () => {
                 <div className='col-md-5 col-lg-4'>
                   <div className='login-form'>
                     <p className='text-center'>
-                      <strong>Enter your email Address</strong>
+                      <strong>Enter your email Address and password</strong>
                     </p>
 
                     <form onSubmit={handleSubmit(onSubmit)}>
