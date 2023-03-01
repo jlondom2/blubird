@@ -20,7 +20,7 @@ import tokenomicsSlice from "./tokenomics/tokenomicsSlice";
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: ["signup", "modal"],
+  blacklist: ["signup", "modal", "tokenomics"],
 };
 
 const rootReducer = combineReducers({

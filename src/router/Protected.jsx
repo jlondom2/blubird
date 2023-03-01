@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 export const Protected = ({ isSignedIn, children }) => {
-  if (isSignedIn === "non-authenticated") {
+  if (isSignedIn != "authenticated") {
     return (
       <Navigate
         to='/login'

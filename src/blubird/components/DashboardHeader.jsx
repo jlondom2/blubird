@@ -1,4 +1,4 @@
-function TokenomicsHeader() {
+function DashboardHeader() {
   return (
     <>
       <div className='d-md-flex align-items-center justify-content-between'>
@@ -68,8 +68,10 @@ function TokenomicsHeader() {
           </div>
         </div>
       </div>
+
+      <hr />
     </>
   );
 }
 
-export default TokenomicsHeader;
+export default DashboardHeader;

@@ -1,14 +1,13 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { LoginPage } from "../auth";
-import { DashboardPage } from "../blubird";
-import { getEnvVariables } from "../helpers";
+import { DashboardPage, CapTable } from "../blubird";
+
 import Protected from "./Protected";
 import { useEffect } from "react";
 import { validateLogin } from "../store/auth/thunks";
 import { checking } from "../store/auth/authSlice";
 import Loader from "../blubird/ui/Loader";
-import { TokenomicsQuickSetup } from "../blubird/pages/TokenomicsQuickSetup";
 
 export const AppRouter = () => {
   const { state: authStatus } = useSelector((state) => state.auth);
@@ -17,11 +16,8 @@ export const AppRouter = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("validate login!");
     dispatch(validateLogin());
   }, []);
-
-  console.log("auth status", authStatus);
 
   if (authStatus === "checking") {
     return <Loader />;
@@ -35,6 +31,15 @@ export const AppRouter = () => {
           element={
             <Protected isSignedIn={authStatus}>
               <DashboardPage />
+            </Protected>
+          }
+        />
+
+        <Route
+          path='/captable'
+          element={
+            <Protected isSignedIn={authStatus}>
+              <CapTable />
             </Protected>
           }
         />

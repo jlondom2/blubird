@@ -3,14 +3,27 @@ import { createSlice } from "@reduxjs/toolkit";
 export const tokenomicsSlice = createSlice({
   name: "tokenomics",
   initialState: {
-    setupDone: false,
+    setupDone: true,
+    formPage: 0,
+    formFields: [],
   },
   reducers: {
-    increment: (state /* action */) => {
-      console.log("");
+    setFormFields: (state, { payload }) => {
+      state.formFields.push(payload);
+    },
+
+    setFormPage: (state) => {
+      state.formPage += 1;
+    },
+
+    saveFormtoBackend: (state) => {
+      console.log("save form! conenect with backend first");
+
+      console.log(state.formFields);
     },
   },
 });
 
-export const { increment } = tokenomicsSlice.actions;
+export const { setFormFields, setFormPage, saveFormtoBackend } =
+  tokenomicsSlice.actions;
 export default tokenomicsSlice;
