@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Sidebar } from "../capTableSidebar/Sidebar";
+import { Notes } from "./Notes";
 
 export const AllocationsCapTable = () => {
   const [showSidebar, setShowSidebar] = useState(false);
-
+  const [showNotes, setShowNotes] = useState(false);
   return (
     <>
       {/* <!-- ToolBar STARTS --> */}
@@ -112,11 +113,16 @@ export const AllocationsCapTable = () => {
                     <i className='fa-solid fa-up-right-and-down-left-from-center'></i>
                   </a>
                   <a
-                    data-bs-toggle='offcanvas'
-                    href='#offcanvas_notes'
+                    role='button'
+                    onClick={() => setShowNotes(true)}
                   >
                     <i className='fa-solid fa-file-invoice'></i>
                   </a>
+
+                  <Notes
+                    show={showNotes}
+                    hide={setShowNotes}
+                  />
 
                   <OverlayTrigger
                     placement='top'
@@ -139,41 +145,6 @@ export const AllocationsCapTable = () => {
                     show={showSidebar}
                     hide={setShowSidebar}
                   />
-                </div>
-              </td>
-
-              <td>$00,000,000,000</td>
-              <td>$00,000,000,000</td>
-              <td>$00,000,000,000</td>
-              <td>$00,000,000,000</td>
-              <td>$00,000,000,000</td>
-              <td>00,000,000,000</td>
-            </tr>
-
-            <tr>
-              <td scope='row'>First Name, Last Name</td>
-              <td>
-                <div className='cap-table-icons d-flex justify-content-between'>
-                  <a
-                    href='#'
-                    data-bs-toggle='offcanvas'
-                    data-bs-target='#offcanvas'
-                  >
-                    <i className='fa-solid fa-up-right-and-down-left-from-center'></i>
-                  </a>
-                  <a
-                    data-bs-toggle='offcanvas'
-                    href='#offcanvas_notes'
-                  >
-                    <i className='fa-solid fa-file-invoice'></i>
-                  </a>
-
-                  <a
-                    href='#'
-                    className='text-success'
-                  >
-                    <i className='fa-solid fa-clipboard-check text-success'></i>
-                  </a>
                 </div>
               </td>
 

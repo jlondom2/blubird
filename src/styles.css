@@ -12758,6 +12758,12 @@ strong {
   color: #fff;
 }
 
+a:not([href]):not([class]),
+a:not([href]):not([class]):hover {
+  color: #78a8ff;
+  text-decoration: none;
+}
+
 .note-box {
   background-color: #0d0d0d;
   color: #fff;
