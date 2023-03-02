@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Offcanvas, Tab, Tabs } from "react-bootstrap";
+import { Commissions } from "./Commissions";
 import { IndividualDetails } from "./IndividualDetails";
+import { PaymentInformation } from "./PaymentInformation";
 
 export const Sidebar = ({ show, hide }) => {
   return (
@@ -9,6 +11,7 @@ export const Sidebar = ({ show, hide }) => {
         show={show}
         onHide={hide}
         placement='end'
+        backdrop='static'
       >
         <Offcanvas.Header closeButton></Offcanvas.Header>
         <Offcanvas.Body>
@@ -27,13 +30,13 @@ export const Sidebar = ({ show, hide }) => {
               eventKey='payment'
               title='TXID & ERC-20 Address'
             >
-              <p>test2</p>
+              <PaymentInformation />
             </Tab>
             <Tab
               eventKey='comissions'
               title='Comissions'
             >
-              <p>test3</p>
+              <Commissions />
             </Tab>
           </Tabs>
         </Offcanvas.Body>

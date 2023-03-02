@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Sidebar } from "../capTableSidebar/Sidebar";
 
 export const AllocationsCapTable = () => {
@@ -117,15 +118,22 @@ export const AllocationsCapTable = () => {
                     <i className='fa-solid fa-file-invoice'></i>
                   </a>
 
-                  <a
-                    href='#'
-                    data-bs-toggle='tooltip'
-                    data-bs-placement='top'
-                    title='Missing following: SAFT KYC Incomplete'
-                    className='text-info'
+                  <OverlayTrigger
+                    placement='top'
+                    delay={{ show: 50, hide: 40 }}
+                    overlay={
+                      <Tooltip id='button-tooltip-2'>
+                        Missing following: SAFT KYC Incomplete
+                      </Tooltip>
+                    }
                   >
-                    <i className='fa-solid text-info fa-circle-exclamation'></i>
-                  </a>
+                    <a
+                      role='button'
+                      clasnamme='text-info'
+                    >
+                      <i className='fa-solid text-info fa-circle-exclamation'></i>
+                    </a>
+                  </OverlayTrigger>
 
                   <Sidebar
                     show={showSidebar}
