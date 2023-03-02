@@ -1,7 +1,12 @@
+import { MainContent } from "../ui/MainContent";
+import { AllocationsCapTable } from "../views/capTable/AllocationsCapTable";
+
 export const CapTable = () => {
   return (
     <>
-      <h2 className='text-white'>CapTable</h2>
+      <MainContent>
+        <AllocationsCapTable />
+      </MainContent>
     </>
   );
 };

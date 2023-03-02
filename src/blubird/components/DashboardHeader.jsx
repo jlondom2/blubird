@@ -1,44 +1,46 @@
+import { Link, NavLink } from "react-router-dom";
+
 function DashboardHeader() {
   return (
     <>
       <div className='d-md-flex align-items-center justify-content-between'>
         <div>
           <div className='logo-bo mb-4'>
-            <a href='#'>
+            <NavLink to='/'>
               <img
                 src='/assets/logo.png'
                 width='140'
                 alt='BluBird'
               />
-            </a>
+            </NavLink>
           </div>
 
           <div className='main-menu text-center d-lg-flex align-items-center mb-3 mb-md-0'>
             <div>
-              <a
-                href='#'
-                className='menu-item active'
+              <NavLink
+                to='/'
+                className='menu-item'
               >
                 <i className='fa-solid fa-square-poll-vertical me-2'></i>
                 Tokenomics
-              </a>
+              </NavLink>
 
-              <a
-                href='#'
+              <NavLink
+                to='/captable'
                 className='menu-item'
               >
                 <i className='fa-solid fa-square-poll-vertical me-2'></i>
                 Cap Table
                 <i className='fa-solid fa-lock text-orange ms-2'></i>
-              </a>
+              </NavLink>
 
-              <a
-                href='#'
+              <NavLink
+                to='/deployment'
                 className='menu-item'
               >
                 <i className='fa-solid fa-square-poll-vertical me-2'></i>
                 Deployment
-              </a>
+              </NavLink>
             </div>
           </div>
         </div>

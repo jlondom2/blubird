@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { validateLogin } from "../store/auth/thunks";
 import { checking } from "../store/auth/authSlice";
 import Loader from "../blubird/ui/Loader";
+import { DeploymentPage } from "../blubird/pages/DeploymentPage";
 
 export const AppRouter = () => {
   const { state: authStatus } = useSelector((state) => state.auth);
@@ -40,6 +41,15 @@ export const AppRouter = () => {
           element={
             <Protected isSignedIn={authStatus}>
               <CapTable />
+            </Protected>
+          }
+        />
+
+        <Route
+          path='/deployment'
+          element={
+            <Protected isSignedIn={authStatus}>
+              <DeploymentPage />
             </Protected>
           }
         />

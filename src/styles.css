@@ -11956,7 +11956,11 @@ body {
 .sb-nav-fixed #layoutSidenav #layoutSidenav_content {
   padding-left: 345px;
   top: 56px;
-  background-color: #212529;
+  background-color: #0d0d0d;
+}
+
+.sb-nav-fixed.bg-dark {
+  background-color: #0d0d0d !important;
 }
 
 #layoutError {
@@ -12338,7 +12342,9 @@ body.bg-dark {
 
   .sb-nav-fixed #layoutSidenav #layoutSidenav_content {
     padding-left: 40px;
-    top: 56px;
+    top: 0px;
+    background-color: #0d0d0d;
+    padding-top: 56px;
   }
   #layoutSidenav #layoutSidenav_content {
     margin-left: 0;
@@ -12803,4 +12809,43 @@ strong {
   color: red;
   font-size: 12px;
   margin-top: 6px;
+}
+
+.nav-tabs .nav-item:first-child .nav-link {
+  padding-left: 0px;
+}
+
+.nav-tabs .nav-item:last-child .nav-link {
+  border-right: 0px;
+}
+
+.nav-tabs {
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 20px;
+  justify-content: space-between;
+}
+
+.nav-tabs .nav-link {
+  margin-bottom: 0;
+  background: none;
+  border: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  color: #606060;
+  font-size: 13px;
+  border-right: 1px solid #fff;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  font-weight: bold;
+
+  background: none;
+  color: #fff;
+  padding-right: 15px;
+  padding-left: 15px;
 }
