@@ -4,6 +4,7 @@ import { TokenomicsSetup } from "../views/TokenomicsSetup";
 import { Allocations } from "../views/tokenomicsTables/Allocations";
 import { ReleaseSchedule } from "../views/tokenomicsTables/ReleaseSchedule";
 import { MainContent } from "../ui/MainContent";
+import { TeamDetails } from "../views/capTable/setup/TeamDetails";
 
 export const DashboardPage = () => {
   const { setupDone } = useSelector((state) => state.tokenomics);
@@ -19,6 +20,7 @@ export const DashboardPage = () => {
           <>
             <Allocations />
             <ReleaseSchedule />
+            <TeamDetails />
           </>
         )}
       </MainContent>
