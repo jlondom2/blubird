@@ -1,8 +1,17 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { showModal } from "../../../store/addProject/addProjectSlice";
+import { AddProject } from "../../views/addProject/AddProject";
 
 function LayoutSideNav1() {
+  const dispatch = useDispatch();
+  const openModal = () => {
+    dispatch(showModal());
+  };
+
   return (
     <>
+      <AddProject />
       <div id='layoutSidenav_nav'>
         <nav
           className='sb-sidenav accordion sb-sidenav-dark'
@@ -34,9 +43,8 @@ function LayoutSideNav1() {
 
               <div className='project-actions p-1 mt-2'>
                 <a
-                  href=''
-                  data-bs-toggle='modal'
-                  data-bs-target='#add_project'
+                  role='button'
+                  onClick={openModal}
                   className='d-flex align-items-center mb-2'
                 >
                   <i className='fa-solid fa-circle-plus me-2'></i>

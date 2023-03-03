@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { AddAllocation } from "../tokenomicsModals/AddAllocation";
 
@@ -8,6 +9,11 @@ export const Allocations = () => {
     setShowAddAllocation(true);
   };
 
+  const [toggleAllocations, setToggleAllocations] = useState(true);
+  const handleToggleAllocations = () => {
+    setToggleAllocations(!toggleAllocations);
+  };
+
   return (
     <>
       {/*  <!-- ToolBar STARTS --> */}
@@ -16,10 +22,22 @@ export const Allocations = () => {
         <div className='d-flex align-items-center'>
           <div className='me-5'>
             <a
-              href='#'
+              role='button'
+              onClick={handleToggleAllocations}
               className='fs-6'
             >
-              <i className='me-2 fa-solid fa-chevron-down'></i>Allocations
+              {toggleAllocations ? (
+                <FontAwesomeIcon
+                  className='me-2'
+                  icon='fa-solid fa-chevron-right'
+                />
+              ) : (
+                <FontAwesomeIcon
+                  className='me-2'
+                  icon='fa-solid fa-chevron-down'
+                />
+              )}
+              Allocations
             </a>
           </div>
 
@@ -70,10 +88,11 @@ export const Allocations = () => {
 
       {/* <!-- ToolBar END --> */}
 
-      {/* <!-- TOKENOMICS TABLE START --> */}
-      <div className='main-table table-responsive my-4'>
-        {/*  <!-- main table  --> */}
-
+      <div
+        className={`main-table table-responsive my-4 ${
+          toggleAllocations ? "show-box" : "hidden"
+        } `}
+      >
         <table className='table'>
           <thead>
             <tr>
@@ -133,7 +152,6 @@ export const Allocations = () => {
           </tbody>
         </table>
       </div>
-      {/* <!-- TOKENOMICS TABLE END--> */}
     </>
   );
 };

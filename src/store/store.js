@@ -17,11 +17,12 @@ import signUpModalsSlice from "./ui/signUpModalsSlice";
 import togglerSlice from "./ui/togglerSlice";
 import tokenomicsSlice from "./tokenomics/tokenomicsSlice";
 import captableSlice from "./captable/captableSlice";
+import addprojectSlice from "./addProject/addProjectSlice";
 
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: ["signup", "modal", "tokenomics", "captable"],
+  blacklist: ["signup", "modal", "tokenomics", "captable", "addProject"],
 };
 
 const rootReducer = combineReducers({
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
   modal: signUpModalsSlice.reducer,
   toggler: togglerSlice.reducer,
   captable: captableSlice.reducer,
+  addProject: addprojectSlice.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

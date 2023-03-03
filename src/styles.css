@@ -12855,3 +12855,31 @@ a:not([href]):not([class]):hover {
   padding-right: 15px;
   padding-left: 15px;
 }
+
+.show-box {
+  display: block;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+.hidden {
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+  display: none;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
