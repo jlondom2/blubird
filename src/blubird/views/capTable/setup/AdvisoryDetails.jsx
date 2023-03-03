@@ -1,22 +1,15 @@
 import { Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  closeModals,
-  showTeamDetails,
-} from "../../../../store/captable/captableSlice";
+import { closeModals } from "../../../../store/captable/captableSlice";
 
-export const RoundDetails = () => {
-  const { roundDetailsModal } = useSelector((state) => state.captable);
+export const AdvisoryDetails = () => {
+  const { advisoryDetailsModal } = useSelector((state) => state.captable);
   const dispatch = useDispatch();
-
-  const showTeam = () => {
-    dispatch(showTeamDetails());
-  };
 
   return (
     <>
       <Modal
-        show={roundDetailsModal}
+        show={advisoryDetailsModal}
         onHide={() => dispatch(closeModals())}
         className='text-white'
       >
@@ -24,7 +17,6 @@ export const RoundDetails = () => {
           <Modal.Title>Cap Table Setup</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {/*  <!-- PROGRESS STEPS --> */}
           <div className='progress-steps'>
             <div className='step done'>
               <div className='step-circle'></div>
@@ -35,11 +27,11 @@ export const RoundDetails = () => {
               <div className='step-circle'></div>
               <span className='label'>Round Details</span>
             </div>
-            <div className='step'>
+            <div className='step done'>
               <div className='step-circle'></div>
               <span className='label'>Team Details</span>
             </div>
-            <div className='step'>
+            <div className='step done'>
               <div className='step-circle'></div>
               <span className='label'>Advisory Details</span>
             </div>
@@ -48,9 +40,9 @@ export const RoundDetails = () => {
           <form action=''>
             <div className='mb-3'>
               <h6>
-                <strong>Round Details</strong>
+                <strong>Advisory Details</strong>
               </h6>
-              <p>How Many Rounds?</p>
+              <p>How many tokens allocated (or % of total)</p>
               <input
                 type='text'
                 placeholder='Enter Amount of Rounds'
@@ -58,30 +50,49 @@ export const RoundDetails = () => {
               />
             </div>
 
-            <div className='mb-3 mt-4'>
-              <p>Name</p>
+            <div className='mb-3'>
+              <p>How many advisors have allocation?</p>
               <select
                 name=''
                 className='form-select'
                 id=''
               >
-                <option value=''>Select Round Name</option>
-                <option value='1'>Round Name 1</option>
-                <option value='2'>Round Name 2</option>
+                <option value=''>Select Amount of Advisors</option>
+                <option value=''>1-10</option>
+                <option value=''>11-100</option>
+                <option value=''>100+</option>
               </select>
             </div>
 
-            <div className='mb-3'>
-              <p>Token Amounts</p>
-              <input
-                type='text'
-                placeholder='Enter Amount or Percentaje'
-                className='form-control'
-              />
+            <div className='mb-3 mt-4'>
+              <p>Advisor Details</p>
+              <div className='mb-3'>
+                <input
+                  type='text'
+                  placeholder='Enter Team Member Name'
+                  className='form-control'
+                />
+              </div>
+
+              <div className='mb-3'>
+                <input
+                  type='text'
+                  placeholder='Enter Member Role'
+                  className='form-control'
+                />
+              </div>
+
+              <div className='mb-3'>
+                <input
+                  type='text'
+                  placeholder='Ente Percentaje of Total Supply'
+                  className='form-control'
+                />
+              </div>
             </div>
 
             <div className='mb-3 mt-4'>
-              <p>Round Vesting Schedule</p>
+              <p>Advisor Vesting Schedule</p>
 
               <div className='input-badge mb-3'>
                 <input
@@ -134,11 +145,10 @@ export const RoundDetails = () => {
 
             <div className='d-grid mt-5'>
               <a
-                onClick={showTeam}
-                role='button'
+                href='#'
                 className='btn btn-primary btn-block'
               >
-                NEXT
+                SUBMIT
               </a>
             </div>
           </form>

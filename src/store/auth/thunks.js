@@ -6,6 +6,7 @@ import {
   onLogout,
   onSucessRegister,
   clearErrorMessage,
+  clearChecking,
 } from "./authSlice";
 import { clearFields } from "./signupSlice";
 
@@ -74,6 +75,8 @@ export const validateLogin = () => {
       const resp = await blubirdApi.get(`/users/isvalidusertoken/${token}`);
 
       console.log("logged?", resp.data);
+
+      dispatch(clearChecking());
 
       if (!resp.data) return dispatch(onLogout());
     } catch (error) {

@@ -3,6 +3,7 @@ import { showTokenDetails } from "../../store/captable/captableSlice";
 
 import { MainContent } from "../ui/MainContent";
 import { AllocationsCapTable } from "../views/capTable/AllocationsCapTable";
+import { AdvisoryDetails } from "../views/capTable/setup/AdvisoryDetails";
 import { RoundDetails } from "../views/capTable/setup/RoundDetails";
 import { TeamDetails } from "../views/capTable/setup/TeamDetails";
 
@@ -22,7 +23,15 @@ export const CapTable = () => {
     <>
       <MainContent>
         {setupDone ? (
-          <AllocationsCapTable />
+          <>
+            <AllocationsCapTable />
+            <a
+              role='button'
+              onClick={startSetup}
+            >
+              Open Cap Table Setup
+            </a>
+          </>
         ) : (
           <>
             <button
@@ -31,12 +40,13 @@ export const CapTable = () => {
             >
               Start Captable Setup
             </button>
-
-            <TokenDetails />
-            <RoundDetails />
-            <TeamDetails />
           </>
         )}
+
+        <TokenDetails />
+        <RoundDetails />
+        <TeamDetails />
+        <AdvisoryDetails />
       </MainContent>
     </>
   );

@@ -3,10 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 export const captableSlice = createSlice({
   name: "captable",
   initialState: {
-    setupDone: false,
+    setupDone: true,
     tokenDetailsModal: false,
     roundDetailsModal: false,
     teamDetailsModal: false,
+    advisoryDetailsModal: false,
   },
   reducers: {
     showTokenDetails: (state) => {
@@ -20,15 +21,23 @@ export const captableSlice = createSlice({
     },
 
     showTeamDetails: (state) => {
-      console.log("show team detail");
       state.teamDetailsModal = true;
       state.tokenDetailsModal = false;
       state.roundDetailsModal = false;
     },
 
+    showAdvisoryDetails: (state) => {
+      state.teamDetailsModal = false;
+      state.tokenDetailsModal = false;
+      state.roundDetailsModal = false;
+      state.advisoryDetailsModal = true;
+    },
+
     closeModals: (state) => {
       state.tokenDetailsModal = false;
       state.roundDetailsModal = false;
+      state.teamDetailsModal = false;
+      state.advisoryDetailsModal = false;
     },
   },
 });
@@ -37,6 +46,7 @@ export const {
   showTokenDetails,
   showRoundDetails,
   showTeamDetails,
+  showAdvisoryDetails,
   closeModals,
 } = captableSlice.actions;
 export default captableSlice;
