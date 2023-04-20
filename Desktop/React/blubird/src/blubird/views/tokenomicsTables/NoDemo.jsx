@@ -4,25 +4,10 @@ import { AddAllocation } from "../tokenomicsModals/AddAllocation";
 import { QuickSetup } from "../tokenomicsSetup/QuickSetup";
 import { GetStarted } from "../tokenomicsFirstTime/GetStarted";
 
-export const AllocationsEmpty = () => {
-  const [showAddAllocation, setShowAddAllocation] = useState(false);
-
-  const handleShowAddAllocation = () => {
-    setShowAddAllocation(true);
-  };
-
-  const [toggleAllocations, setToggleAllocations] = useState(true);
-  const handleToggleAllocations = () => {
-    setToggleAllocations(!toggleAllocations);
-  };
-
-  const [isChecked, setIsChecked] = useState(false);
-
-  const handleChange = (event) => {
-    setIsChecked((current) => !current);
-  };
-
+export const NoDemo = () => {
   const [showQuick, setShowQuick] = useState(false);
+
+  const [show, setShow] = useState(true);
 
   const handleQuickSetup = () => {
     setShowQuick(true);
@@ -98,7 +83,10 @@ export const AllocationsEmpty = () => {
         </div>
       </div>
 
-      <GetStarted show={true} />
+      <GetStarted
+        show={show}
+        setShow={setShow}
+      />
 
       <QuickSetup
         show={showQuick}

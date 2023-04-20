@@ -14,6 +14,7 @@ import {
 import authSlice from "./auth/authSlice";
 import signupSlice from "./auth/signupSlice";
 import signUpModalsSlice from "./ui/signUpModalsSlice";
+import signUpStepsSlice from "./ui/signUpSteps";
 import togglerSlice from "./ui/togglerSlice";
 import tokenomicsSlice from "./tokenomics/tokenomicsSlice";
 import captableSlice from "./captable/captableSlice";
@@ -33,6 +34,7 @@ const rootReducer = combineReducers({
   toggler: togglerSlice.reducer,
   captable: captableSlice.reducer,
   addProject: addprojectSlice.reducer,
+  signupSteps: signUpStepsSlice.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

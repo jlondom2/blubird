@@ -12772,7 +12772,7 @@ a:not([href]):not([class]):hover {
 }
 
 .login-bar-dark {
-  background-color: #151515;
+  background-color: #272727;
 }
 
 .login-form {
@@ -12978,4 +12978,144 @@ a:not([href]):not([class]):hover {
   top: 18px;
   right: 18px;
   color: #fff;
+}
+
+.module-box {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  border-top: 7px solid #4587ff;
+  margin-bottom: 20px;
+}
+
+.module-info {
+  flex: 0 0 360px;
+}
+
+.module-box .btn-primary {
+  font-size: 14px;
+  background-color: #4587ff;
+  border-color: #4587ff;
+}
+
+.summary .summary-item {
+  color: #fff;
+  border-bottom: 1px solid #7c7c7c;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  padding-bottom: 10px;
+}
+
+.summary-item h5 {
+  font-size: 18px;
+}
+
+.checkout-form {
+  background: #181818;
+  padding: 20px;
+  border-radius: 7px;
+  color: #c1c1c1;
+}
+
+.checkout-form .form-control {
+  background: #181818;
+  border-color: #c1c1c1;
+  font-size: 14px;
+}
+
+.checkout-form label {
+  margin-bottom: 10px;
+  color: #fff;
+  font-size: 13px;
+}
+
+.checkout-form input::placeholder {
+  color: #c1c1c1 !important;
+}
+
+.checkout-form .nav-tabs {
+  padding-bottom: 20px;
+  justify-content: space-between;
+  border: none;
+  background: #000;
+  padding: 0px;
+  color: #fff;
+  border-radius: 14px;
+}
+
+.checkout-form .nav-item {
+  flex: 1 1 auto !important;
+}
+
+.checkout-form .nav-item button {
+  background: none;
+  height: 100%;
+  padding: 20px;
+  border: none !important;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+}
+
+.checkout-form .nav-item button.active {
+  background: #78a8ff;
+  border-radius: 14px;
+}
+
+.checkout-form .nav-tabs .nav-item:first-child .nav-link {
+  padding-left: 20px;
+}
+
+.checkout-form .tab-content {
+  padding: 25px 0;
+}
+
+.checkout-form .form-i {
+  position: relative;
+}
+
+.checkout-form .form-i .field-icons {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+}
+
+.checkout-form .form-i .field-icons svg {
+  color: #fff;
+  font-size: 23px;
+}
+
+.select-crypto {
+  border: 1px solid #c1c1c1;
+  padding: 20px;
+  border-radius: 14px;
+  color: #c1c1c1;
+  position: relative;
+  display: block;
+}
+
+.select-crypto svg {
+  position: absolute;
+  top: 21px;
+  right: 18px;
+  font-size: 17px;
+  color: #fff;
+}
+
+.wallet-btn {
+  border: 1px solid #fff;
+  color: #fff;
+  border-radius: 12px;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.wallet-btn:hover,
+.select-crypto:hover {
+  background: #78a8ff;
+  color: #fff;
+  border-color: #78a8ff;
 }

@@ -3,17 +3,26 @@ import { createSlice } from "@reduxjs/toolkit";
 export const addprojectSlice = createSlice({
   name: "addproject",
   initialState: {
-    showModal: false,
+    modal1: false,
+    modal2: false,
   },
   reducers: {
-    showModal: (state /* action */) => {
-      state.showModal = true;
+    showModal1: (state /* action */) => {
+      state.modal1 = true;
     },
-    closeModal: (state /* action */) => {
-      state.showModal = false;
+    showModal2: (state /* action */) => {
+      state.modal1 = false;
+      state.modal2 = true;
+    },
+    closeModal1: (state /* action */) => {
+      state.modal1 = false;
+    },
+    closeModal2: (state /* action */) => {
+      state.modal2 = false;
     },
   },
 });
 
-export const { showModal, closeModal } = addprojectSlice.actions;
+export const { showModal1, showModal2, closeModal1, closeModal2 } =
+  addprojectSlice.actions;
 export default addprojectSlice;

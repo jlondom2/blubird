@@ -1,12 +1,12 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { showModal } from "../../../store/addProject/addProjectSlice";
+import { showModal1 } from "../../../store/addProject/addProjectSlice";
 import { AddProject } from "../../views/addProject/AddProject";
 
 function LayoutSideNav1() {
   const dispatch = useDispatch();
   const openModal = () => {
-    dispatch(showModal());
+    dispatch(showModal1());
   };
 
   return (

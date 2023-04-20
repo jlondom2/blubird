@@ -15,6 +15,9 @@ import { validateLogin } from "../store/auth/thunks";
 import { checking } from "../store/auth/authSlice";
 import Loader from "../blubird/ui/Loader";
 import { DeploymentPage } from "../blubird/pages/DeploymentPage";
+import { SignUpPage } from "../auth/pages/SignupPage";
+import { ModulesPage } from "../auth/pages/ModulesPage";
+import { CheckoutPage } from "../auth/pages/CheckoutPage";
 
 export const AppRouter = () => {
   const { state: authStatus } = useSelector((state) => state.auth);
@@ -86,11 +89,44 @@ export const AppRouter = () => {
         />
 
         <Route
+          path='/signup'
+          element={
+            authStatus === "authenticated" ? (
+              <Navigate to='/' />
+            ) : (
+              <SignUpPage />
+            )
+          }
+        />
+
+        <Route
           path='/profile'
           element={
             <Protected isSignedIn={authStatus}>
               <AccountPage />
             </Protected>
+          }
+        />
+
+        <Route
+          path='/modules'
+          element={
+            authStatus === "authenticated" ? (
+              <Navigate to='/' />
+            ) : (
+              <ModulesPage />
+            )
+          }
+        />
+
+        <Route
+          path='/checkout'
+          element={
+            authStatus === "authenticated" ? (
+              <Navigate to='/' />
+            ) : (
+              <CheckoutPage />
+            )
           }
         />
 

@@ -7,6 +7,7 @@ import { Step1, Step2, Step3, Step4, Step5 } from "../components/signup";
 import { startLogin, validateLogin } from "../../store/auth/thunks";
 import { onloginTest } from "../../store/auth/authSlice";
 import { Step6 } from "../components/signup/Step6";
+import { Link } from "react-router-dom";
 
 export const LoginPage = () => {
   const dispatch = useDispatch();
@@ -41,14 +42,14 @@ export const LoginPage = () => {
 
   return (
     <>
-      <SignUpForm>
+      {/* <SignUpForm>
         <Step1 props={showModal1} />
         <Step2 props={showModal2} />
         <Step3 props={showModal3} />
         <Step4 props={showModal4} />
         <Step5 props={showModal5} />
         <Step6 props={showModal6} />
-      </SignUpForm>
+      </SignUpForm> */}
 
       <div className='bg-primary'>
         {/* NavBar Login */}
@@ -125,7 +126,7 @@ export const LoginPage = () => {
                   </div>
 
                   {/* LOGIN WITH GOOGLE */}
-                  {/*  <div className='text-center py-3'>
+                  <div className='text-center py-3'>
                     <div className='small'>
                       <p>Or sign in with</p>
                       <a href='#'>
@@ -136,18 +137,18 @@ export const LoginPage = () => {
                         />
                       </a>
                     </div>
-                  </div> */}
+                  </div>
 
                   <div className='mt-5 text-center'>
                     <p>
                       Don't have and account yet? <br />
-                      <a
-                        role='button'
+                      <Link
+                        to='/signup'
                         onClick={() => dispatch(handleShow1())}
                         className='fw-bold'
                       >
                         Sign Up
-                      </a>
+                      </Link>
                     </p>
                   </div>
                 </div>
